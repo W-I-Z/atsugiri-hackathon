@@ -1,0 +1,59 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.btn-dave {
+  background-image: url("/images/btn.png");
+  width: 400px;
+  height: 200px;
+  display: block;
+  margin: 0 auto;
+}
+.btn-dave:hover {
+  background-image: url("/images/btn-hover.png");
+}
+.btn-dave:active {
+  background-image: url("/images/btn-down.png");
+}
+
+.img-dave {
+  float: left;
+}
+
+.left_balloon {
+  position: relative;
+  background: #fff;
+  border: 1px solid #777;
+  padding: 10px;
+  border-radius: 15px;
+  margin: 100px 20% 10px 10px;
+  max-width: 229px;
+  min-width: 229px;
+  min-height: 40px;
+  float: left;
+}
+.left_balloon:after, .left_balloon:before {
+  right: 100%;
+  top: 50%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+.left_balloon:after {
+  border: 7px rgba(255, 255, 255, 0);
+  border-right-color: #fff;
+  margin-top: -7px;
+}
+.left_balloon:before {
+  border: 8px transparent;
+  border-right-color: #000;
+  margin-top: -8px;
+}

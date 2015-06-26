@@ -1,0 +1,6 @@
+node_modules
+.idea
+*.iml
+public/files/*
+!empty
+config/default.json

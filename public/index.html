@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>さくらクラブ ハッカソンテンプレート</title>
+
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-6 col-xs-offset-3">
+            <a id="hack-btn" href="#" class="btn-dave"></a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-6 col-xs-offset-3">
+            <img class="img-dave" src="/images/spector.png" alt="">
+            <p class="left_balloon">今、時間ある？</p>
+        </div>
+    </div>
+    <audio id="sound">
+        <source src="">
+    </audio>
+</div>
+
+<script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#hack-btn').on('click', function() {
+            $('.left_balloon').empty().html('.........');
+            $.ajax({
+                url: '/voice'
+            }).done(function(data){
+                var audio = $('#sound');
+                audio.find("source").attr("src", data.filename);
+                audio[0].pause();
+                audio[0].load();
+                audio[0].play();
+
+                var tweet = data.tweet,
+                    i = 0,
+                    output = '',
+                    timer = setInterval(function(){
+                    output += tweet.charAt(i);
+                    $('.left_balloon').html(output);
+                    if(output.length === tweet.length){
+                        clearInterval(timer);
+                    }
+                    i++;
+                }, 100);
+
+            });
+
+            return false;
+        });
+    });
+</script>
+</body>
+</html>
